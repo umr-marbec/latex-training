@@ -481,14 +481,14 @@ To write unformatted text, you can use the \verb+verbatim+ environment. For inst
 
 \begin{lstlisting}
 \begin{verbatim}
-\textbf{Unformatted document}
+\textbf{bold text}
 \end{verbatim} 
 \end{lstlisting}
 
 will produce:
 
 \begin{verbatim}
-\textbf{Unformatted document}
+\textbf{bold text}
 \end{verbatim} 
 
 For inline unformatted text, use the \verb+\verb+ environment as follows: \verb+\verb|Unformatted text|+
@@ -533,7 +533,7 @@ mean(x, na.rm=TRUE)
 \begin{frame}[fragile]{Mathematics: display}
 To include inline mathematical symbols, write them between \verb+$$+ symbols. For example, \verb+$A_{i,j}$+ will produce $A_{i,j}$.
 
-To write mathematical expressions or equations, define a \verb+displaymath+ (unnumbered) or an \verb+equation+ block. For example,
+To write mathematical expressions or equations, define a \verb+displaymath+ or an \verb+equation+  block. The former is for unnumbered equations, the second is for numbered equations than can be referred to (see next). For example:
 
 \begin{lstlisting}
 \begin{displaymath}
@@ -1062,6 +1062,7 @@ will produce:
 \section{References, sections, bibliography}
 
 \subsection{Labels and references}
+\label{sec-ref}
 
 \begin{frame}[fragile]{Setting and refering labels}
 In order to refer to any object (equation, figure, table, section, you can add a label by using the \lstinline{\label} function. For instance, using our previously define subfigure:
