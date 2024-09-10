@@ -32,7 +32,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Header/footer definition
 \usepackage{fancyhdr}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%% For toc management
 \setcounter{tocdepth}{1}
 \setcounter{minitocdepth}{6}
@@ -46,15 +45,15 @@
     urlcolor = blue,
     citecolor=black
 }
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define homemade style for header/footer
 % Redefine commands of chapter and section writting
 % Hard to understand, even for me
 
-%% Uncomment to reset default formatting
+% Original format
 % \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername\ \thechapter.\ #1}}{}}
 % \renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection .\ #1}}{}}
 
+% New format
 \renewcommand{\chaptermark}[1]{\markboth{\textit{\chaptername\ \thechapter.\ #1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\textit{\thesection .\ #1}}{}}
 
@@ -86,7 +85,7 @@
 \@addtoreset{table}{chapter}
 \makeatother    
 
-\title{My first document}
+\title{My PhD Thesis}
 \author{Nicolas Barrier}
 \date{\today}
 
@@ -94,15 +93,21 @@
 
 % Include a PDF page
 \includepdf[pages=-]{figs/Couverture_nbarrier.pdf}
-
+% or use the \maketitle instead
 \maketitle
+
+% For activating Mini TOC
 \dominitoc
-\pagestyle{empty} % set empty page for the table of content (no header/footer)
+
+% set empty page style for the table of content (no header/footer)
+\pagestyle{empty} 
 \tableofcontents
 
 \clearpage
 
+% set the pagestyle for the remaining of the document
 \pagestyle{mystyle}
+
 \chapter{Introduction}
 \addstarredchapter{Introduction}
 \minitoc
