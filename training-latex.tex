@@ -1198,7 +1198,6 @@ You can include sub-toc at the beginning of chapters using the \verb+minitoc+ pa
 \begin{lstlisting}
 \documentclass{report}
 \usepackage{minitoc}
-
 \setcounter{tocdepth}{0}
 \setcounter{minitocdepth}{5}
 
@@ -1209,18 +1208,17 @@ You can include sub-toc at the beginning of chapters using the \verb+minitoc+ pa
 \chapter{Chap 1}
 \minitoc
 \section{AAA}
-\section{BBB}
 
 \chapter{Chap 2}
 \minitoc
 \section{CCC}
-\section{DDD}
-
 \end{document}
-
 \end{lstlisting}
 
-    
+\begin{alertblock}{Warning!}
+    Does not work properly with unnumbered chapters/sections
+\end{alertblock}
+
 \end{frame}
 
 
