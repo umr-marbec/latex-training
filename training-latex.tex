@@ -89,7 +89,7 @@
     tabsize=2}
 
 
-\author{Nicolas Barrier}
+\author{Nicolas Barrier (\href{mailto:nicolas.barrier@ird.fr}{nicolas.barrier@ird.fr})}
 \title{Introduction to \LaTeX}
 % \subtitle{CCNU Beamer Theme}
 \institute{
@@ -264,17 +264,16 @@ Some useful packages are listed below:
 \begin{tabular}{m{5em}m{25em}}
     \verb+hyperref+ & inclusion of external links\\
     \verb+natbib+ & bibliography\\
-    \verb+ragged2e+ & for text alignment\\
     \verb+listings+ & code inclusion (R, Python, etc.)\\
     \verb+babel+ & for french documents\\
     \verb+xcolor+ & colors\\
     \verb+graphicx+& figures \\
     \verb+array+  &  to control table columns width\\
     \verb+multirow+ & to allow multi-rows\\
-    \verb+lipsum+ & to generate dummy text (only for this training!)  \\
     \verb+subcaption+ & for multiple figures\\
     \verb+gensymb+ & for external symbols \\
     \verb+amsmath+ & for mathematical equations\\
+    \verb+lipsum+ & to generate dummy text (only for this training!)  \\
     \end{tabular}
     \caption{List of useful packages}
     \end{table}
@@ -358,12 +357,12 @@ Some commands allows to change the shape of the font:
 \item \verb+\texit{Italic text}+ : \textit{Italic text}\\
 \item \verb+\underline{Underlined text}+ : \underline{Underlined text}\\
 \item \verb|\emph{Highlighted text}| : \emph{Highlighted text} (italic if main text is regular, regular is main text is italic)\\
-\item \verb+\textcolor{red}{Colored text}+: \textcolor{red}{Colored text}
+\item \verb+\textcolor{red}{Colored text}+: \textcolor{red}{Colored text}. \textbf{Requires the} \verb+xcolor+ \textbf{package!}
 \item \footnotesize \verb+\textbf{\emph{\textcolor{red}{Bold red}}}+: \normalsize \textbf{\emph{\textcolor{red}{Bold red}}}\\
 \end{itemize}
 
 \begin{block}{Tip:}
-You can use \href{https://www.latextemplates.com/svgnames-colors}{SVG colors} if you include the \verb+xcolor+ package as follows:
+You can use \href{https://www.latextemplates.com/svgnames-colors}{SVG colors} (for example \verb+Plum+ or \verb+MidnightBlue+) if you include the \verb+xcolor+ package as follows:
 \begin{lstlisting}
 \usepackage[svgnames]{xcolor}
 \end{lstlisting}
@@ -372,75 +371,70 @@ You can use \href{https://www.latextemplates.com/svgnames-colors}{SVG colors} if
 
 \end{frame}
 
+% \begin{frame}[fragile]{Writing text: alignment}
+
+% Changing alignment is achieved by using the \verb+ragged2e+ package:
+
+% \begin{lstlisting}
+% \raggedleft 
+% This is left align text 
+% \raggedright 
+% This is right aligh text 
+% \centering
+% This is centerred text 
+% \justifying
+% This is justified text (default) 
+% \end{lstlisting}
+
+% will produce:
+
+% \raggedleft 
+% This is left align text
+
+% \raggedright 
+% This is right aligh text
+
+% \centering
+% This is centerred text
+
+% \justifying
+% This is justified text (default)
+
+% \begin{alertblock}{Warning}
+%     The alignment is valid for the remaining of the current "block", except if overridden by the \verb+justifying+ command.
+% \end{alertblock}
+
+% \end{frame}
+
 \begin{frame}[fragile]{Writing text: alignment}
 
-Changing alignment is achieved by using the \verb+ragged2e+ package:
-
-\begin{lstlisting}
-\raggedleft 
-This is left align text 
-\raggedright 
-This is right aligh text 
-\centering
-This is centerred text 
-\justifying
-This is justified text (default) 
-\end{lstlisting}
-
-will produce:
-
-\raggedleft 
-This is left align text
-
-\raggedright 
-This is right aligh text
-
-\centering
-This is centerred text
-
-\justifying
-This is justified text (default)
-
-\begin{alertblock}{Warning}
-    The alignment is valid for the remaining of the current "block", except if overridden by the \verb+justifying+ command.
-\end{alertblock}
-
-\end{frame}
-
-\begin{frame}[fragile]{Writing text: alignment}
-
-Another possibility is to use the \verb+flushlet+, \verb+flushright+ and \verb+centering+ blocks:
+Default alignment is justified. To change it, create a \verb+flushlet+, \verb+flushright+ or \verb+centering+ block:
 
 \begin{lstlisting}
 \begin{flushleft}
-This is left align text
+This is left aligned text
+
 \end{flushleft}
 \begin{flushright}
-This is right aligh text
+This is right aligned text
+
 \end{flushright}
 \begin{center}
-This is centerred text
+This is centred text
 \end{center}
 \end{lstlisting}
 
-will produce:
-
 \begin{flushleft}
-This is left align text
+This is left aligned text
 
 \end{flushleft}
-
 \begin{flushright}
-This is right aligh text
+This is right aligned text
 
 \end{flushright}
-
 \begin{center}
-This is centerred text
-
+This is centred text
 \end{center}
-
-Here, the alignment is valid between the \verb+begin+ and \verb+end+ statements.
 
 \end{frame}
 
@@ -481,7 +475,7 @@ To write numbered list:
 \subsection{Unformatted text and code}
 
 \begin{frame}[fragile]{Writing unformatted text}
-To write unformatted text, you can use the \verb+verbatim+ environment. For instance
+To write unformatted text, you can use the \verb+verbatim+ environment. For example:
 
 \begin{lstlisting}
 \begin{verbatim}
@@ -495,17 +489,17 @@ will produce:
 \textbf{bold text}
 \end{verbatim} 
 
-For inline unformatted text, use the \verb+\verb+ environment as follows: \verb+\verb|Unformatted text|+
+For inline unformatted text, create a \verb+\verb+ environment as follows: \verb+\verb|Unformatted text|+
 
 \begin{block}{Note}
-    The \verb+\verb+ environment can be called by replacing  \verb+|+ by any character. For instance \verb|\verb+Unformatted text+| gives the same result.
+    The \verb+\verb+ environment can be called by replacing  \verb+|+ by any character. For example \verb|\verb+Unformatted text+| gives the same result.
 \end{block}
 
 \end{frame}
 
 \begin{frame}[fragile]{Writing code}
 
-To write code, you need to use the \verb+lstlistings+ package. For instance, to include R code:
+Writting code is achieved by using the \verb+listings+ package. For example, to include R code:
 
 \scriptsize
 \begin{verbatim}
@@ -527,7 +521,7 @@ mean(x, na.rm=TRUE)
 \end{lstlisting}
 
 \begin{block}{Tips!}
-    You can use \verb+\lstinputlisting{file.R}+ to include code from a file. You can define code renderring using the \verb+lstset+ command. Some informations \href{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}{here}
+    You can use \verb+\lstinputlisting{file.R}+ to include code from a file. You can define code rendering using the \verb+lstset+ command. Some information \href{https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings}{here}
 \end{block}
 
 \end{frame}
@@ -535,9 +529,11 @@ mean(x, na.rm=TRUE)
 \subsection{Mathematical symbols and equations}
 
 \begin{frame}[fragile]{Mathematics: display}
+Mathematical expression are managed by the \verb+amsmath+ package. 
+
 To include inline mathematical symbols, write them between \verb+$$+ symbols. For example, \verb+$A_{i,j}$+ will produce $A_{i,j}$.
 
-To write mathematical expressions or equations, define a \verb+displaymath+ or an \verb+equation+  block. The former is for unnumbered equations, the second is for numbered equations than can be referred to (see next). For example:
+To write mathematical expressions or equations, define a \verb+displaymath+ or an \verb+equation+  block. The former is for unnumbered equations, the second is for numbered equations that can be referred to (see next). For example:
 
 \begin{lstlisting}
 \begin{displaymath}
@@ -613,17 +609,33 @@ a & b & \ddots
 \end{bmatrix}
 \end{displaymath}
 
-For inline matrix, enclose the matrix environment between \verb+$+ symbols: 
-$\mathbf{A}=\begin{bmatrix}
+\end{frame}
+
+\begin{frame}[fragile]{Mathematics: inline matrix}
+
+For inline matrix, enclose the matrix environment between \verb+$+ symbols. For example:
+
+\begin{lstlisting}
+This is matrix $
+\mathbf{A}=\begin{bmatrix}
+1 & \vdots & \dots\\
+a & b & \ddots
+\end{bmatrix}
+$    
+\end{lstlisting}
+
+will produce
+
+This is matrix $
+\mathbf{A}=\begin{bmatrix}
 1 & \vdots & \dots\\
 a & b & \ddots
 \end{bmatrix}
 $
 
-
 \end{frame}
 
-\begin{frame}[fragile]{Mathematics: arrays}
+\begin{frame}[fragile]{Mathematics: aligned equations}
 
 To have aligned equations, use \verb+align+ or \verb+alignat+ from the \verb+amsmath+ package. For example:
 
@@ -680,17 +692,17 @@ Underbrace can be added to the equation members. For example:
 
 \begin{lstlisting}
 \begin{displaymath}
-    \partial_t \varepsilon = \underbrace{- \partial_w(\gamma \varepsilon) + \frac{\gamma}{w}\varepsilon}_{Growth} 
+\partial_t \varepsilon = \underbrace{- \partial_w(\gamma \varepsilon) + \dfrac{\gamma}{w}\varepsilon}_{Growth} 
+\underbrace{- M \varepsilon \vphantom{\dfrac{\gamma}{w}\varepsilon}}_{Mortalities}
 \end{displaymath}
 \end{lstlisting}
 
-will produce:
-
 \begin{displaymath}
-    \partial_t \varepsilon = \underbrace{- \partial_w(\gamma \varepsilon) + \frac{\gamma}{w}\varepsilon}_{Growth} 
+\partial_t \varepsilon = \underbrace{- \partial_w(\gamma \varepsilon) + \dfrac{\gamma}{w}\varepsilon}_{Growth} 
+\underbrace{- M \varepsilon \vphantom{\dfrac{\gamma}{w}\varepsilon}}_{Mortalities}
 \end{displaymath}
 
-
+The \lstinline{vphantom} function is for the underbraced text alignment. It takes as argument the biggest term of the equation
     
 \end{frame}
 
@@ -708,13 +720,15 @@ will produce:
 
 \end{frame}
 
-\begin{frame}[fragile]{Float objects: positionning}
+\begin{frame}[fragile]{Float objects: positioning}
 
-To position a float object, you need to add one or more of the following arguments to the \verb+\begin{floatname}+ command.
+To position a float object, provide one or more position arguments between \verb+[]+: \verb+\begin{floatname}[...]+. The arguments
+are described below:
 
-\begin{table}[]
-    \centering
-    \begin{tabular}{m{4em}m{20em}}
+%\begin{table}[]
+%
+\begin{center}
+ \begin{tabular}{m{4em}m{20em}}
          Argument & Description  \\
          \hline
          \hline
@@ -724,12 +738,11 @@ To position a float object, you need to add one or more of the following argumen
           \verb+p+ & Put the table in a special page, for tables only.  \\
           \verb+!+ & Override internal LaTeX parameters.  \\
           \verb+H+ & Place the table at this precise location, pretty much like \verb+h!+  \\
-    \end{tabular}
-    \caption{Floats positioning arguments}
-\end{table}
-
+    \end{tabular}   
+\end{center}
+    
 \begin{block}{Tip}
-To force the display of all the floats (before a new chapter or section for instance), use the \lstinline{\clearpage} method    
+To force the display of all the floats (before a new chapter or section for instance), use the \lstinline{\clearpage} function    
 \end{block}
 
 \end{frame}
@@ -738,7 +751,7 @@ To force the display of all the floats (before a new chapter or section for inst
 
 \begin{frame}[fragile]{Tables}
 
-Including a table is done by combining the \verb+table+ and \verb+tabular+ blocks as follows:
+Including a table is done by combining the \verb+table+ (float object) and \verb+tabular+ (for table layout) blocks as follows:
 
 \begin{lstlisting}
 \begin{table}[h!]
@@ -753,8 +766,6 @@ Including a table is done by combining the \verb+table+ and \verb+tabular+ block
     \caption{First table}
 \end{table}
 \end{lstlisting}
-
-will produce:
 
 \begin{table}[h!]
     \centering
@@ -774,7 +785,7 @@ will produce:
 
 \begin{itemize}
 \item The \verb+[h!]+ forces the position of the table
-\item The \verb+{rlc}+ argument to the \verb+tabular+ function specifies that we have three columns with right, left and centerred aligments.
+\item The \verb+{rlc}+ argument to the \verb+tabular+ function specifies that we have three columns with right, left and centerred aligments. You can add vertical bars to the table as follows: \verb+|r|l|c|+
 \item{\verb+\hline+ adds a vertical line}
 \item{Columns are separated by \verb+&+}
 \item{Each table line must end with \verb+\\+}
@@ -790,7 +801,7 @@ Using the \verb+array+ package, you can provide fixed column widths by replacing
 \begin{lstlisting}
 \begin{table}[h!]
     \centering
-    \begin{tabular}m{10em}m{5em}m{5em}}
+    \begin{tabular}{m{10em}m{5em}m{5em}}
          Column 1 & Column 2 & Column 3 \\
          \hline
          \hline
@@ -891,22 +902,21 @@ will produce:
 
 \begin{frame}[fragile]{Figures}
 
-Adding a figure is done by combining the \verb+figure+ block with the \verb+includegraphics+ function. For  instance:
+Adding a figure requires the \verb+graphicx+ package and is done by combining the \verb+figure+ block (float object) with the \verb+includegraphics+ function (for adding the graph). For  instance:
 
 \begin{lstlisting}
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.2\linewidth]{figs/logo_marbec}
+    \includegraphics[width=0.1\linewidth]{figs/logo_marbec}
     \caption{Figure example}
 \end{figure}
-
 \end{lstlisting}
 
 will produce:
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.2\linewidth]{figs/logo_marbec.png}
+    \includegraphics[width=0.1\linewidth]{figs/logo_marbec.png}
     \caption{Figure example}
 \end{figure}
 
@@ -919,7 +929,7 @@ Width can be provided as a proportion of the width of the line using
 
 \begin{frame}[fragile]{Figures: size}
 
-The size of a figure can be specified as an argument to the \verb+includegraphics+ method. Accepted values are:
+The size of a figure can be specified as an argument to the \verb+includegraphics+ function. Accepted values are:
 
 \scriptsize 
 \begin{table}[]
@@ -983,7 +993,6 @@ Including subfigures is done by using the \verb+subcaption+ package and the \ver
      \end{subfigure}
 \caption{Horizontal subfigures}
 \end{figure}
-
 \end{lstlisting}
 
 will produce:
@@ -1069,7 +1078,8 @@ will produce:
 \label{sec-ref}
 
 \begin{frame}[fragile]{Setting and refering labels}
-In order to refer to any object (equation, figure, table, section, you can add a label by using the \lstinline{\label} function. For instance, using our previously define subfigure:
+
+In order to refer to an object (equation, figure, table, chapter, section), you must add a unique label by using the \lstinline{\label} function. For instance, on our previously defined subfigure, add the \verb+label+ as follows:
 
 \begin{lstlisting}
  \begin{subfigure}[c]{0.3\textwidth}
@@ -1080,13 +1090,13 @@ In order to refer to any object (equation, figure, table, section, you can add a
  \end{subfigure}
 \end{lstlisting}
 
-You can then refers to the object by using the \verb+\ref+ method. For instance, \verb+Figure \ref{fig-logo-ird}+ will produce Figure \ref{fig-logo-ird}.
+You can then refer to the object by using the \verb+\ref+ function. For example, \verb+Figure \ref{fig-logo-ird}+ will produce Figure \ref{fig-logo-ird}.
 
 \end{frame}
 
 \begin{frame}[fragile]{Setting labels: warning}
 
-Warning:
+Some things to remember:
 
 \begin{itemize}
     \item You need to compile the code \textbf{twice} to have references right (\LaTeX{} creates auxiliary files)
@@ -1125,8 +1135,6 @@ will produce:
 
 Example of note \footnote{This is a note}
 
-
-    
 \end{frame}
 
 \subsection{Sections}
@@ -1153,29 +1161,29 @@ To add a chapter, section or subsection:
 \end{document}
 \end{lstlisting}
 
-The \verb+*+ symbol is for unnumbered chapter or sections
+The \verb+*+ symbol is for unnumbered chapter or sections.
 
 \end{frame}
 
 \begin{frame}[fragile]{Defining sections: table of content}
 
-To add a table of content (toc), call the \lstinline{\tableofcontents} method where you want to add it.
+To add a table of content (toc), call the \lstinline{\tableofcontents} function where you want to add it.
 \begin{lstlisting}
 \documentclass{book}
-\setcounter{tocdepth} % Control toc depth (here, chapter + sections)
+\setcounter{tocdepth}{1} % Control toc depth (here, chapter + sections)
 \begin{document}
 
 \tableofcontents
 
-\chapter{Chapter XXX}
-\chapter*{Chapter toto}
-\addstarredchapter{Unnumbered chapter}
+\chapter{Introduction}
 
+\chapter*{Discussion}
+\addcontentsline{toc}{chapter}{Discussion}
 \end{document}
 \end{lstlisting}
 
 \begin{alertblock}{Unnumbered section}
-    The \lstinline{addstarredchapter} method allows to add unnumbered chapters to the TOC.
+    The \lstinline{addcontentsline} function allows to add unnumbered chapters to the TOC.
 \end{alertblock}
 
 \begin{alertblock}{Compilation}
@@ -1257,17 +1265,18 @@ Before the \verb+\end{document}+ statement, specify the bibliography style and i
 \begin{lstlisting}
 \bibliographystyle{plainnat} % author year citations
 \bibliography{biblio.bib} % Entries are in the refs.bib file
+\addcontentsline{toc}{chapter}{Biblio} % to add the bibliography to the TOC
 \end{lstlisting}
 
 \begin{block}{Tip}
-By default, author-year citations use \verb+[]+. To use \verb+()+, include \verb+\setcitestyle{round}+ in the header
+By default, author-year citations use \verb+[]+. To use \verb+()+, include \verb+\setcitestyle{round}+ in the header.
 \end{block}
 
 \end{frame}
 
 \begin{frame}[fragile]{Bibliography: cite reference}
 
-To cite a reference, use one of the \verb+\cite+ method as follows:
+To cite a reference, use one of the \verb+\cite+ function as follows:
 
 \begin{table}[]
     \centering
@@ -1286,8 +1295,12 @@ To cite a reference, use one of the \verb+\cite+ method as follows:
     \label{tab:cite-commands}
 \end{table}
 
-\end{frame}
+\begin{alertblock}{Warning!}
+Only cited references will appear on the bibliography list. To show all references, call \verb+\nocite{*}+ before the \verb+\end{document}+ 
+statement
+\end{alertblock}
 
+\end{frame}
 
 \begin{frame}[fragile]{Bibliography: compilation}
 
@@ -1306,123 +1319,139 @@ Overleaf does that for you. No need to bother!
 
 \end{frame}
 
-\section{Formatting tips}
 
-\subsection{Main page}
-\begin{frame}[fragile]{Main page}
+\section{Report template}
 
-Formatting main pages is difficult with \LaTeX{}. But you can use the \verb+pdfpages+ to include externally built main pages:
+\begin{frame}[fragile]{Report template}
+To start from a formatted manuscript: 
 
-\begin{lstlisting}
-\begin{document}
-\includepdf[pages=-]{figs/Couverture_nbarrier.pdf}
-\end{document}    
-\end{lstlisting}
+\begin{itemize}
+    \item Open and compile the \verb+tex_example.tex+ file. See the result
+    \item Comment/Uncomment the things you want to test (linespacing, caption font, etc.)
+    \item Fill the input files (\verb+intro.tex+, \verb+chap1.tex+, ...)
+    \item Fill the \verb+biblio.bib+ file
+\end{itemize}
 
-The \verb+pages=-+ argument specifies to include all the pages of the PDF document
-
-\begin{alertblock}{Warning}
-If you include an external main page, no need to use the \verb+\maketitle+ function.
-\end{alertblock}
-
-\begin{block}{Tip}
-This function can also be used to include articles in your manuscript
-\end{block}
+And you are done!
 
 \end{frame}
 
-\subsection{Margin and line spacing}
 
-\begin{frame}[fragile]{Margin and line spacing}
+% \subsection{Main page}
+% \begin{frame}[fragile]{Main page}
 
-To modify the margins, use the \verb+geometry+ package. In the header, specify the margins as follows:
-\begin{lstlisting}
-\geometry{top=3cm, bottom=3cm, left=3cm, right=3cm}
-\end{lstlisting}
+% Formatting main pages is difficult with \LaTeX{}. But you can use the \verb+pdfpages+ to include externally built main pages:
 
-To use double line spacing, use the \verb+setspace+ package as follows:
+% \begin{lstlisting}
+% \begin{document}
+% \includepdf[pages=-]{figs/Couverture_nbarrier.pdf}
+% \end{document}    
+% \end{lstlisting}
 
-\begin{lstlisting}
-\usepackage{setspace}
-\doublespacing
-\end{lstlisting}
+% The \verb+pages=-+ argument specifies to include all the pages of the PDF document
 
-To add line numbers, use the \verb+lineno+ package:
+% \begin{alertblock}{Warning}
+% If you include an external main page, no need to use the \verb+\maketitle+ function.
+% \end{alertblock}
 
-\begin{lstlisting}
-\usepackage{lineno}
-\linenumbers
-\end{lstlisting}
+% \begin{block}{Tip}
+% This function can also be used to include articles in your manuscript
+% \end{block}
 
-\end{frame}
+% \end{frame}
 
-\subsection{Header/Footer}
+% \subsection{Margin and line spacing}
 
-\begin{frame}[fragile]{Changing header}
+% \begin{frame}[fragile]{Margin and line spacing}
 
-To change header/footer of your report, use the \verb+fancyhdr+ package as follows. In the header of your document, add the following lines:
+% To modify the margins, use the \verb+geometry+ package. In the header, specify the margins as follows:
+% \begin{lstlisting}
+% \geometry{top=3cm, bottom=3cm, left=3cm, right=3cm}
+% \end{lstlisting}
 
-\begin{lstlisting}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead{} % clear all header fields
-\end{lstlisting}
+% To use double line spacing, use the \verb+setspace+ package as follows:
 
-It will resets all the original settings. Now define how the chapter and section will be written in the header:
+% \begin{lstlisting}
+% \usepackage{setspace}
+% \doublespacing
+% \end{lstlisting}
 
-\begin{lstlisting}
-\renewcommand{\chaptermark}[1]{\markboth{\textit{\chaptername\ \thechapter.\ #1}}{}}
-\renewcommand{\sectionmark}[1]{\markright{\textit{\thesection .\ #1}}{}}    
-\end{lstlisting}
+% To add line numbers, use the \verb+lineno+ package:
 
-To show chapter header on the rightmost part of odd page and section header on the leftmost part of even pages: 
-\begin{lstlisting}
-\fancyhead[RO]{\rightmark} % chapter for right odd page header
-\fancyhead[LE]{\leftmark} % section for left even page header
-\end{lstlisting}
+% \begin{lstlisting}
+% \usepackage{lineno}
+% \linenumbers
+% \end{lstlisting}
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}[fragile]{Changing footer}
+% \subsection{Header/Footer}
 
-To add user-defined footer, use the \verb+fancyfoot+ command. To define author as right footer of odd page and date as left footer of even page:
+% \begin{frame}[fragile]{Changing header}
 
-\begin{lstlisting}
-\fancyfoot[RO]{Nicolas Barrier} % author for right odd footer
-\fancyfoot[LE]{2 Septembre 2024} % date for left even footer
-\end{lstlisting}
+% To change header/footer of your report, use the \verb+fancyhdr+ package as follows. In the header of your document, add the following lines:
 
-\begin{block}
-You can define the header/footer styles in an environment (see the \verb+tex_example.tex+ example file.
-\end{block}
+% \begin{lstlisting}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhead{} % clear all header fields
+% \end{lstlisting}
 
-\end{frame}
+% It will resets all the original settings. Now define how the chapter and section will be written in the header:
 
-\subsection{Figure/Table/Equation numbering}
+% \begin{lstlisting}
+% \renewcommand{\chaptermark}[1]{\markboth{\textit{\chaptername\ \thechapter.\ #1}}{}}
+% \renewcommand{\sectionmark}[1]{\markright{\textit{\thesection .\ #1}}{}}    
+% \end{lstlisting}
 
-\begin{frame}[fragile]{Figure/Table/Equations numbering}
+% To show chapter header on the rightmost part of odd page and section header on the leftmost part of even pages: 
+% \begin{lstlisting}
+% \fancyhead[RO]{\rightmark} % chapter for right odd page header
+% \fancyhead[LE]{\leftmark} % section for left even page header
+% \end{lstlisting}
 
-By default, \LaTeX{} will number figure/table/equations from $1$ to $N$, with $N$ the total number of elements within the document. For thesis, it might be interesting to have numbers of the form $X.Y$, with $X$ the chapter number and $Y$ the figure number within the chapter.\\
+% \end{frame}
 
-To do so, add in the header:
-\begin{lstlisting}
-\makeatletter
-\renewcommand\theequation{\thechapter.\arabic{equation}}
-\@addtoreset{equation}{chapter}
-\makeatother
+% \begin{frame}[fragile]{Changing footer}
 
-\makeatletter
-\renewcommand\thefigure{\thechapter.\arabic{figure}}
-\@addtoreset{figure}{chapter}
-\makeatother
+% To add user-defined footer, use the \verb+fancyfoot+ command. To define author as right footer of odd page and date as left footer of even page:
 
-\makeatletter
-\renewcommand\thetable{\thechapter.\arabic{table}}
-\@addtoreset{table}{chapter}
-\makeatother    
-\end{lstlisting}
+% \begin{lstlisting}
+% \fancyfoot[RO]{Nicolas Barrier} % author for right odd footer
+% \fancyfoot[LE]{2 Septembre 2024} % date for left even footer
+% \end{lstlisting}
 
-\end{frame}
+% \begin{block}{Tip!}
+% You can define the header/footer styles in an environment (see the \verb+tex_example.tex+ example file.
+% \end{block}
+
+% \end{frame}
+
+% \subsection{Figure/Table/Equation numbering}
+
+% \begin{frame}[fragile]{Figure/Table/Equations numbering}
+
+% By default, \LaTeX{} will number figure/table/equations from $1$ to $N$, with $N$ the total number of elements within the document. For thesis, it might be interesting to have numbers of the form $X.Y$, with $X$ the chapter number and $Y$ the figure number within the chapter.\\
+
+% To do so, add in the header:
+% \begin{lstlisting}
+% \makeatletter
+% \renewcommand\theequation{\thechapter.\arabic{equation}}
+% \@addtoreset{equation}{chapter}
+% \makeatother
+
+% \makeatletter
+% \renewcommand\thefigure{\thechapter.\arabic{figure}}
+% \@addtoreset{figure}{chapter}
+% \makeatother
+
+% \makeatletter
+% \renewcommand\thetable{\thechapter.\arabic{table}}
+% \@addtoreset{table}{chapter}
+% \makeatother    
+% \end{lstlisting}
+
+% \end{frame}
 
 \bibliographystyle{plainnat}
 

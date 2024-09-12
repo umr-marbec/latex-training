@@ -11,10 +11,10 @@
 \usepackage{multirow}
 \usepackage{pdfpages}
 
-% Change the caption font in italic
+% Change the float captions font in italic
 \renewcommand{\captionfont}{\it}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% biblio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% biblio (round brackets)
 \usepackage[round]{natbib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Margins
@@ -32,13 +32,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Header/footer definition
 \usepackage{fancyhdr}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%% For toc management
+%%%%%%%%%%%%%%%%%%%%%%%%%%% For toc management (depth of toc)
 \setcounter{tocdepth}{1}
 \setcounter{minitocdepth}{6}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% reference (must be loaded after minitoc)
 \usepackage{hyperref}
 
+% change colors in references
 \hypersetup{
     colorlinks = true,
     linkcolor=,
@@ -54,36 +55,20 @@
 % \renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection .\ #1}}{}}
 
 % New format
-\renewcommand{\chaptermark}[1]{\markboth{\textit{\chaptername\ \thechapter.\ #1}}{}}
-\renewcommand{\sectionmark}[1]{\markright{\textit{\thesection .\ #1}}{}}
+\renewcommand{\chaptermark}[1]{\markboth{\textbf{\textit{\chaptername\ \thechapter.\ #1}}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\textbf{\textit{\thesection .\ #1}}}{}}
 
 %%%%%%%%%%%% define a fancy style for headers
 \fancypagestyle{mystyle} {
-\fancyhead{} % clear all header fields
-
-% Modify the header methods
-\fancyhead[RO]{\rightmark} % chapter for right odd page header
-\fancyhead[LE]{\leftmark} % section for left even page header
-
-\fancyfoot[RO]{Nicolas Barrier} % author for right odd footer
-\fancyfoot[LE]{2 Septembre 2024} % date for left even footer
+    \fancyhead{} % clear all header fields
+    
+    % Modify the header methods
+    \fancyhead[RO]{\rightmark} % chapter for right odd page header
+    \fancyhead[LE]{\leftmark} % section for left even page header
+    
+    \fancyfoot[RO]{\textit{Nicolas Barrier}} % author for right odd footer
+    \fancyfoot[LE]{\textit{\today}} % date for left even footer
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Renaming figures/equations/tables
-\makeatletter
-\renewcommand\theequation{\thechapter.\arabic{equation}}
-\@addtoreset{equation}{chapter}
-\makeatother
-
-\makeatletter
-\renewcommand\thefigure{\thechapter.\arabic{figure}}
-\@addtoreset{figure}{chapter}
-\makeatother
-
-\makeatletter
-\renewcommand\thetable{\thechapter.\arabic{table}}
-\@addtoreset{table}{chapter}
-\makeatother    
 
 \title{My PhD Thesis}
 \author{Nicolas Barrier}
@@ -108,75 +93,17 @@
 % set the pagestyle for the remaining of the document
 \pagestyle{mystyle}
 
-\chapter{Introduction}
-\addstarredchapter{Introduction}
-\minitoc
-\lipsum
-\section{Context}
-\lipsum
+% This is where you fill the void!
+\input{intro.tex}
+\input{chap1.tex}
+\input{conclusion}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figs/texmaker-1.png}
-    \caption{Compilation using Texmaker}
-\end{figure}
-
-
-\section{Outline}
-
-
-\chapter{Data and method}
-\label{chap:data-method}
-\minitoc
-
-\section{Data}
-\subsection{Data subsection}
-\subsubsection{Data sub-sub section}
-\lipsum[1-3]
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figs/texmaker-1.png}
-    \caption{Compilation using Texmaker}
-\end{figure}
-
-\lipsum[4-7]
-
-\section{Method}
-
-\lipsum[1-5]
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figs/texmaker-1.png}
-    \caption{Compilation using Texmaker}
-\end{figure}
-
-\lipsum[6-7]
-
-\chapter{Results}
-\minitoc
-
-\chapter{Conclusion}
-\addstarredchapter{Conclusion}
-\minitoc
-\section{Conclusion}
-\lipsum
-
-\section{Discussion}
-\lipsum
-
-\section{Perspectives}
-\lipsum
-
-
-\lipsum[1-4]
-
-\chapter*{References}
-\addstarredchapter{References}
-
+% to force the display of all the references, even those
+% not cited (not advised, here only for example)
 \nocite{*}
+
 \bibliographystyle{plainnat} % We choose the "plain" reference style
 \bibliography{biblio.bib} % Entries are in the refs.bib file
+\addcontentsline{toc}{chapter}{Biblio} % add the biblio on the Toc with the name "Biblio"
 
 \end{document}
